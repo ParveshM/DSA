@@ -17,3 +17,4 @@ function findPair(array, target) {
 
 const arr = [6, 7, 9, 4, 0, 2,10];
 console.log(findPair(arr, 10));
+

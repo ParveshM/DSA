@@ -4,7 +4,6 @@ class Node {
         this.next = null;
     }
 }
-
 class LinkedList {
     constructor() {
         this.head = null;
@@ -23,7 +22,6 @@ class LinkedList {
 
         this.tail.next = newNode;
         this.tail = newNode;
-        // console.log('this head', this.head, 'this tail', this.tail);
     }
 
     // Method to print the elements of the list
@@ -40,19 +38,9 @@ class LinkedList {
         }
     }
 }
-
-
 const myList = new LinkedList();
-
-myList.print();
-
 myList.addNode(50);
 myList.addNode(10);
 myList.addNode(100);
 myList.addNode(1);
-console.log('Before sorting the list',myList);
-// myList.print();
-myList.bubbleSort()
-console.log('after sorting the list',myList);
-
 myList.print();

@@ -69,4 +69,3 @@ myList.addNode(2)
 myList.addNode(3)
 myList.insertAfter(2,10)
 myList.print()
-console.log('Linked list', myList);

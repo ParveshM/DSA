@@ -1,19 +1,19 @@
-// function abc(n) {
-//     if (n <= 1) {
-//         return 1
-//     }
-//     return n * abc(n - 1)
-// }
+function abc(n) {
+    if (n <= 1) {
+        return 1
+    }
+    return n * abc(n - 1)
+}
+const fact = 5
+const result = abc(fact)
+console.log(`Factorial of ${fact} is :`, result);
 
-// const result = abc(5)
-// console.log('result', result);
+// var fib = function (n) {
+//     if (n <= 1 ) { 
+//         return n
+//     } 
+//     return fib(n - 1) + fib(n - 2)
+// };
 
-var fib = function (n) {
-    if (n <= 1 ) { 
-        return n
-    } 
-    return fib(n - 1) + fib(n - 2)
-};
-
-const result = fib()
-console.log(result);
+// const result = fib()
+// console.log(result);

@@ -11,7 +11,6 @@ class linkedList {
         this.tail = null
     }
 
-
     addNode(data) {
         const newNode = new Node(data)
 
@@ -45,7 +44,6 @@ class linkedList {
 
         } while (swapped);
     }
-
 
     print() {
         let temp = this.head

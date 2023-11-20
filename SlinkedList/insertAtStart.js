@@ -50,11 +50,11 @@ class linkedList {
             return
         }
         while (temp) {
-            console.log('Data is: ',temp);
+            console.log('Data is: ',temp.data);
             temp = temp.next
         }
-        console.log('head',this.head);
-        console.log('tail',this.tail);
+        // console.log('head',this.head);
+        // console.log('tail',this.tail);
     }
 }
 
