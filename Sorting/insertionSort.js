@@ -1,4 +1,3 @@
-
 function insertionSort(arr) {
     for (let i = 1; i <= arr.length - 1; i++) {
         let current = arr[i];
