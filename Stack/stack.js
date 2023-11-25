@@ -28,7 +28,9 @@ class stack {
         }
         this.top = this.top.next;
     }
-
+    peek() {
+        return this.top.data
+    }
     // Method to print the elements of the list
     display() {
         let current = this.top;
@@ -37,7 +39,6 @@ class stack {
             return;
         }
         while (current) {
-            console.log('node is', current);
             console.log(current.data);
             current = current.next;
         }
@@ -48,6 +49,4 @@ const myStack = new stack();
 myStack.push(1)
 myStack.push(2)
 myStack.push(3)
-myStack.pop()
-
-myStack.display()
+console.log(myStack.peek());

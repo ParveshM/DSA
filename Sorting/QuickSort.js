@@ -2,10 +2,13 @@ function quickSort(arr) {
     quickSortHelper(arr, 0, arr.length - 1);
     return arr
 }
+
 function quickSortHelper(arr, startIndx, endIndx) {
+
     if (startIndx >= endIndx) {
         return;
     }
+
     let pivot = startIndx; // initailly taking the 0th element
     let i = startIndx + 1; // i = large;
     let j = endIndx; // j = small;
@@ -17,7 +20,7 @@ function quickSortHelper(arr, startIndx, endIndx) {
             // if the i is greater than pivot and j is less than pivot ,then Swap elements;
             swap(arr, i, j);
             i++;
-            j--
+            j--;
         }
 
         if (arr[i] <= arr[pivot]) {
@@ -35,12 +38,10 @@ function quickSortHelper(arr, startIndx, endIndx) {
 }
 
 function swap(arr, i, j) {
-    let temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
+    [arr[i], arr[j]] = [arr[j], arr[i]]
 }
 
 
-const arr = [110, 30, 2, 41, 56, 12]
+const arr = [2, 30, 110, 41, 56, 12]
 
 console.log('Sorted :', quickSort(arr));

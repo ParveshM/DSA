@@ -5,12 +5,10 @@ function mergeSort(arr) {
     const mid = Math.floor(arr.length / 2);
     const firstHalf = arr.slice(0, mid)
     const lastHalf = arr.slice(mid, arr.length)
-    console.log('\nfirst half :', firstHalf, 'Second halg :', lastHalf);
     return join(mergeSort(firstHalf), mergeSort(lastHalf))
 }
 
 function join(firstHalf, lastHalf) {
-    console.log('\ninside join :- FirstHalf', firstHalf, ' Secondhalf : ', lastHalf);
     let newArray = [];
     let i = 0, j = 0;
 

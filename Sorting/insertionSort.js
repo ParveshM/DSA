@@ -1,17 +1,16 @@
-function insertionSort(arr) {
-    for (let i = 1; i <= arr.length - 1; i++) {
-        let current = arr[i];
-        let j = i - 1;
 
-        while (j >= 0 && arr[j] > current) {
-            arr[j + 1] = arr[j]
+function insertionSort(nums) {
+    for (let i = 0; i < nums.length; i++) {
+        let j = i;
+        while (j > 0 && nums[j - 1] > nums[j]) {
+            // Swap elements
+            [nums[j - 1], nums[j]] = [nums[j], nums[j - 1]];
             j--;
         }
-        arr[j + 1] = current
     }
-    return arr
+    return nums;
 }
 
 
-const arr = [110,30, 2, 41, 56, 12, 11, 22, 41]
+const arr = [110, 30, 2, 41, 56, 12, 11, 22, 41]
 console.log('Output is', insertionSort(arr));

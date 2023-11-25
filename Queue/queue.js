@@ -36,7 +36,9 @@ class queue {
             this.rear = null
         }
     }
-
+    peek(){
+        return this.front.data
+    }
     // Method to print the elements of the list
     display() {
         let current = this.front;
@@ -52,9 +54,7 @@ class queue {
 }
 
 const myQ = new queue();
-myQ.enqueue(1)
-myQ.enqueue(2)
-myQ.enqueue(3)
-myQ.dequeue()
-
-myQ.display()
+myQ.enqueue(10)
+myQ.enqueue(20)
+myQ.enqueue(30)
+console.log(myQ.peek());

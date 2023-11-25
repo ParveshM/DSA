@@ -1,37 +1,37 @@
-// Create a simple hash function that converts strings into numeric indexes
-function simpleHash(key, arrayLength) {
-    let total = 0;
-    for (let char of key) {
-        // Map each character to a numeric value and add it to the total
-        const value = char.charCodeAt(0) - 96;
-        total = (total + value) % arrayLength;
-    }
-    return total;
-}
-
 class HashTable {
-    constructor(size = 5) {
+    constructor(size) {
         this.array = new Array(size);
     }
 
-    // Store a key-value pair in the hash table
-    set(key, value) {
-        const index = simpleHash(key, this.array.length);
-        console.log('index val',index);
-        if (!this.array[index]) {
-            this.array[index] = [];
+    simpleHash(key) {
+        let total = 0;
+        for (let char of key) {
+            const value = char.charCodeAt();
+            total = (total + value) % this.array.length;
         }
-        this.array[index].push([key, value]);
+        return total;
     }
 
-    // Retrieve a value based on the key
-    get(key) {
-        const index = simpleHash(key, this.array.length);
-        if (this.array[index]) {
-            for (let i = 0; i < this.array[index].length; i++) {
-                if (this.array[index][i][0] === key) {
-                    return this.array[index][i][1];
+    set(key, value) {
+        const index = this.simpleHash(key);
+        if (!this.array[index]) {
+            this.array[index] = [[key, value]];
+        } else {
+            for (const item of this.array[index]) {
+                if (item[0] === key) {
+                    item[1] = value;
+                    return;
                 }
+            }
+            this.array[index].push([key, value])
+        }
+    }
+
+    get(key) {
+        const index = this.simpleHash(key);
+        for (const item of this.array[index]) {
+            if (item[0] === key) {
+                return [item[0],item[1]]
             }
         }
         return undefined;
@@ -39,14 +39,17 @@ class HashTable {
 }
 
 // Create a hash table instance
-const fruitsTable = new HashTable();
+const fruitsTable = new HashTable(5);
 
 // Add some fruits and their quantities
 fruitsTable.set('apple', 10);
+fruitsTable.set('grape', 101);
 fruitsTable.set('banana', 20);
 fruitsTable.set('orange', 15);
 
+
 // Retrieve quantities based on keys
-console.log(fruitsTable.get('apple')); 
-console.log(fruitsTable.get('banana')); 
+console.log(fruitsTable.get('apple'));
+console.log(fruitsTable.get('grape'));
+console.log(fruitsTable.get('banana'));
 console.log(fruitsTable.get('orange'));

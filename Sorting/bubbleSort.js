@@ -9,6 +9,7 @@ function bubbleSort(arr) {
                 swapped = true;
             }
         }
+        console.log(`After ${i}th iteration`,arr);zz
         if (swapped == false)
             break;
     }
