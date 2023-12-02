@@ -21,7 +21,7 @@ function heapSort(arr) {
     const n = arr.length;
 
     // Heapifying the current array
-    for (let i = Math.floor(n - 1); i >= 0; i--) {
+    for (let i = Math.floor((n / 2) - 1); i >= 0; i--) {
         heapify(arr, n, i);
     }
 
@@ -34,6 +34,6 @@ function heapSort(arr) {
     return arr;
 }
 
-// const a = ["Ant", "Bat", "Cat", "Dog"];
 const a = [85, 65, 7, 100, 8, 4]
 console.log(`After heap sort (Ascending): ${heapSort(a)}`);
+
