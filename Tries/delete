@@ -1,0 +1,94 @@
+class TrieNode {
+    constructor() {
+        this.children = {};
+        this.isEndOfWord = false;
+    }
+}
+
+class Trie {
+    constructor() {
+        this.root = new TrieNode();
+    }
+
+    // Insert a word into the trie
+    insert(word) {
+        let currentNode = this.root;
+        for (let char of word) {
+            if (!currentNode.children[char]) {
+                currentNode.children[char] = new TrieNode();
+            }
+            currentNode = currentNode.children[char];
+        }
+        currentNode.isEndOfWord = true;
+    }
+
+    // Search for a word in the trie
+    search(word) {
+        let currentNode = this.root;
+        for (let char of word) {
+            if (!currentNode.children[char]) {
+                return false;
+            }
+            currentNode = currentNode.children[char];
+        }
+        return currentNode.isEndOfWord;
+    }
+
+    // Check if the Trie contains any words that start with the given prefix
+    startsWith(prefix) {
+        let currentNode = this.root;
+        for (let char of prefix) {
+            if (!currentNode.children[char]) {
+                return false;
+            }
+            currentNode = currentNode.children[char];
+        }
+        return true;
+    }
+
+    // Delete a word from the trie
+    delete(word) {
+        this._delete(this.root, word, 0);
+    }
+
+    _delete(currentNode, word, index) {
+        if (index === word.length) {
+            if (!currentNode.isEndOfWord) {
+                return false; // Word not found in the Trie
+            }
+            // Mark the current node as not the end of a word
+            currentNode.isEndOfWord = false;
+
+            // Check if the current node has any children
+            return Object.keys(currentNode.children).length === 0;
+        }
+
+        const char = word[index];
+        if (!currentNode.children[char]) {
+            return false; // Word not found in the Trie
+        }
+
+        const shouldDeleteCurrentNode = this._delete(currentNode.children[char], word, index + 1);
+
+        // If the child node should be deleted, remove it from the current node's children
+        if (shouldDeleteCurrentNode) {
+            delete currentNode.children[char];
+
+            // Check if the current node has any children and if it is not the end of a word
+            return Object.keys(currentNode.children).length === 0 && !currentNode.isEndOfWord;
+        }
+
+        return false;
+    }
+}
+
+// Example usage
+const trie = new Trie();
+trie.insert("hello");
+trie.insert("hell");
+trie.insert("helium");
+
+console.log(trie.search("hell")); // true
+trie.delete("hell");
+console.log(trie.search("hell")); // false
+console.log(trie.search("hello")); // true
